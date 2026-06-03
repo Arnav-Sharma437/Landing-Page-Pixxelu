@@ -2,7 +2,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* Sticky header shadow on scroll */
   const header = document.querySelector('.site-header');
   if (header) {
     const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     onScroll();
   }
 
-  /* Scroll fade-up */
   const fadeEls = document.querySelectorAll('.fade-up');
   if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const fadeObs = new IntersectionObserver((entries, obs) => {
@@ -26,11 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     fadeEls.forEach(el => el.classList.add('visible'));
   }
 
-  /* Stat counters */
-  const statNums = document.querySelectorAll('.stat-num[data-target]');
+  const statNums = document.querySelectorAll('.stat-num[data-target], .trust-stat-num[data-target]');
   const animateStat = (el) => {
     const target = parseInt(el.getAttribute('data-target'), 10);
-    const suffix = el.getAttribute('data-suffix') || '+';
+    const suffix = el.getAttribute('data-suffix') ?? '+';
     if (isNaN(target)) return;
     let current = 0;
     const steps = 40;
@@ -56,34 +53,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
   statNums.forEach(el => statObs.observe(el));
 
-  /* Process stepper */
-  const processTexts = [
-    'We start by understanding your goals, audience, and competitors. Our website design company team creates a detailed project roadmap and sitemap before any design work begins.',
-    'Our designers craft wireframes and high-fidelity mockups aligned with your brand. You review and approve visuals before development starts.',
-    'Developers build your site with clean, scalable code. We integrate CMS, forms, analytics, and third-party tools as needed.',
-    'Rigorous QA across devices and browsers ensures performance, accessibility, and security. We launch only when everything meets our standards.',
-    'Post-launch, we provide training, updates, and ongoing support so your website continues to perform and grow with your business.'
+  const processSteps = [
+    {
+      title: 'Discovery & Planning',
+      icon: 'fa-search',
+      text: 'We map your guest journey, competitor landscape, and booking goals — essential for hotels, resorts, and travel brands before design begins.'
+    },
+    {
+      title: 'Design & Prototyping',
+      icon: 'fa-pencil-ruler',
+      text: 'Wireframes and luxury mockups for room pages, tour packages, and booking flows. You approve every key screen before development.'
+    },
+    {
+      title: 'Development',
+      icon: 'fa-code',
+      text: 'Clean, scalable builds with CMS, inquiry forms, WhatsApp CTAs, galleries, and integrations tailored to hospitality and travel.'
+    },
+    {
+      title: 'Testing & Launch',
+      icon: 'fa-vial',
+      text: 'Cross-device QA, speed optimization, and conversion checks — we launch only when your site is ready to drive bookings and leads.'
+    },
+    {
+      title: 'Support & Growth',
+      icon: 'fa-life-ring',
+      text: 'Training, updates, seasonal offer changes, and ongoing optimization so your website keeps performing after go-live.'
+    }
   ];
 
-  const tabs = document.querySelectorAll('.process-tab');
-  const panel = document.getElementById('process-panel');
+  const timelineSteps = document.querySelectorAll('.timeline-step');
+  const timelineFill = document.getElementById('timeline-fill');
+  const processTitle = document.getElementById('process-title');
+  const processText = document.getElementById('process-text');
+  const processIcon = document.getElementById('process-icon');
 
-  tabs.forEach(tab => {
+  const setProcessStep = (step) => {
+    const data = processSteps[step];
+    if (!data) return;
+
+    timelineSteps.forEach((t, i) => {
+      const active = i === step;
+      t.classList.toggle('active', active);
+      t.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    if (timelineFill) {
+      timelineFill.style.width = `${((step + 1) / processSteps.length) * 100}%`;
+    }
+    if (processTitle) processTitle.textContent = data.title;
+    if (processText) processText.textContent = data.text;
+    if (processIcon) {
+      processIcon.innerHTML = `<i class="fas ${data.icon}"></i>`;
+    }
+  };
+
+  timelineSteps.forEach(tab => {
     tab.addEventListener('click', () => {
       const step = parseInt(tab.getAttribute('data-step'), 10);
-      tabs.forEach(t => {
-        t.classList.remove('active');
-        t.setAttribute('aria-selected', 'false');
-      });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected', 'true');
-      if (panel && processTexts[step]) {
-        panel.querySelector('p').textContent = processTexts[step];
-      }
+      setProcessStep(step);
     });
   });
 
-  /* FAQ accordion */
+  setProcessStep(0);
+
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     const btn = item.querySelector('.faq-question');
@@ -105,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* Contact form */
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
 
