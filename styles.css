@@ -1396,6 +1396,31 @@ textarea.form-control {
   box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
 }
 
+/* Floating Call Widget */
+.call-widget {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 56px;
+  height: 56px;
+  background-color: var(--primary-accent); /* Branded Orange-Red */
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 6px 20px rgba(232, 68, 26, 0.35);
+  text-decoration: none;
+  z-index: 999;
+  transition: var(--transition-smooth);
+}
+
+.call-widget:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(232, 68, 26, 0.5);
+}
+
 /* =========================================
    ANIMATIONS KEYFRAMES
    ========================================= */
@@ -1772,7 +1797,22 @@ textarea.form-control {
   }
   
   .service-card {
-    flex: 0 1 100%;
+    flex: 0 1 calc(50% - 10px);
+    padding: 20px 10px;
+  }
+  
+  .service-card h3 {
+    font-size: 13px;
+  }
+  
+  .service-icon-box {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 12px;
+  }
+  
+  .service-icon-box i {
+    font-size: 20px;
   }
   
   .inclusion-card {
