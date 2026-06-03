@@ -1796,7 +1796,7 @@ textarea.form-control {
   
   .form-group.row {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 16px;
   }
   
   .footer-grid {
@@ -1809,6 +1809,24 @@ textarea.form-control {
   
   .price-amt {
     font-size: 32px;
+  }
+
+  .pricing-tabs-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 6px;
+    border-radius: 12px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .tab-btn {
+    padding: 10px 12px;
+    font-size: 13px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
   }
   
   .footer-bottom {
