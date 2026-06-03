@@ -1,159 +1,140 @@
-/* 
-=========================================
-   PIXXELU LANDING PAGE - SCRIPTS
-=========================================
-*/
+/* PIXELU LANDING PAGE - SCRIPTS */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-
-
-
-  /* -----------------------------------------
-     3. Scroll-Triggered Fade-Up Animation
-     ----------------------------------------- */
-  const fadeElements = document.querySelectorAll('.fade-up');
-  
-  const fadeObserverOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.05
-  };
-
-  const fadeObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, fadeObserverOptions);
-
-  fadeElements.forEach(el => {
-    fadeObserver.observe(el);
-  });
-
-
-  /* -----------------------------------------
-     4. Counters Animation for Stats Row
-     ----------------------------------------- */
-  const statNumbers = document.querySelectorAll('.stat-num');
-  
-  const animateCounter = (el) => {
-    const target = parseInt(el.getAttribute('data-target'), 10);
-    if (isNaN(target)) return;
-    
-    let count = 0;
-    const duration = 2000;
-    const frameRate = 1000 / 60;
-    const totalFrames = Math.round(duration / frameRate);
-    const increment = target / totalFrames;
-    
-    const counterInterval = setInterval(() => {
-      count += increment;
-      if (count >= target) {
-        el.innerText = target + (target === 100 ? '%' : '+');
-        clearInterval(counterInterval);
-      } else {
-        el.innerText = Math.floor(count) + (target === 100 ? '%' : '+');
-      }
-    }, frameRate);
-  };
-
-  const statsObserverOptions = {
-    root: null,
-    threshold: 0.5
-  };
-
-  const statsObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const stats = entry.target.querySelectorAll('.stat-num');
-        stats.forEach(stat => animateCounter(stat));
-        observer.unobserve(entry.target);
-      }
-    });
-  }, statsObserverOptions);
-
-  const statsRow = document.querySelector('.stats-row');
-  if (statsRow) {
-    statsObserver.observe(statsRow);
+  /* Sticky header shadow on scroll */
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-
-  /* -----------------------------------------
-     5. Accordion Open / Close (FAQ)
-     ----------------------------------------- */
-  const faqItems = document.querySelectorAll('.faq-item');
-
-  faqItems.forEach(item => {
-    const header = item.querySelector('.faq-header');
-    const body = item.querySelector('.faq-body');
-    
-    header.addEventListener('click', () => {
-      const isActive = item.classList.contains('active');
-      
-      faqItems.forEach(otherItem => {
-        if (otherItem !== item) {
-          otherItem.classList.remove('active');
-          otherItem.querySelector('.faq-body').style.maxHeight = null;
+  /* Scroll fade-up */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const fadeObs = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
         }
       });
-      
-      if (isActive) {
-        item.classList.remove('active');
-        body.style.maxHeight = null;
+    }, { threshold: 0.08 });
+    fadeEls.forEach(el => fadeObs.observe(el));
+  } else {
+    fadeEls.forEach(el => el.classList.add('visible'));
+  }
+
+  /* Stat counters */
+  const statNums = document.querySelectorAll('.stat-num[data-target]');
+  const animateStat = (el) => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    const suffix = el.getAttribute('data-suffix') || '+';
+    if (isNaN(target)) return;
+    let current = 0;
+    const steps = 40;
+    const stepVal = target / steps;
+    const timer = setInterval(() => {
+      current += stepVal;
+      if (current >= target) {
+        el.textContent = target + suffix;
+        clearInterval(timer);
       } else {
-        item.classList.add('active');
-        body.style.maxHeight = body.scrollHeight + "px";
+        el.textContent = Math.floor(current) + suffix;
+      }
+    }, 40);
+  };
+
+  const statObs = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateStat(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  statNums.forEach(el => statObs.observe(el));
+
+  /* Process stepper */
+  const processTexts = [
+    'We start by understanding your goals, audience, and competitors. Our website design company team creates a detailed project roadmap and sitemap before any design work begins.',
+    'Our designers craft wireframes and high-fidelity mockups aligned with your brand. You review and approve visuals before development starts.',
+    'Developers build your site with clean, scalable code. We integrate CMS, forms, analytics, and third-party tools as needed.',
+    'Rigorous QA across devices and browsers ensures performance, accessibility, and security. We launch only when everything meets our standards.',
+    'Post-launch, we provide training, updates, and ongoing support so your website continues to perform and grow with your business.'
+  ];
+
+  const tabs = document.querySelectorAll('.process-tab');
+  const panel = document.getElementById('process-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const step = parseInt(tab.getAttribute('data-step'), 10);
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      if (panel && processTexts[step]) {
+        panel.querySelector('p').textContent = processTexts[step];
       }
     });
   });
 
-
-
-  /* -----------------------------------------
-     7. Lead Form Submission Handler & Feedback
-     ----------------------------------------- */
-  const leadForm = document.getElementById('lead-form');
-  const successMsg = document.getElementById('form-success-msg');
-
-  if (leadForm) {
-    leadForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      const name = document.getElementById('form-name').value.trim();
-      const bizName = document.getElementById('form-biz-name').value.trim();
-      const email = document.getElementById('form-email').value.trim();
-      const phone = document.getElementById('form-phone').value.trim();
-      const bizType = document.getElementById('form-biz-type').value;
-      const requirements = document.getElementById('form-requirements').value.trim();
-
-      if (name && bizName && email && phone && bizType && requirements) {
-        successMsg.style.display = 'block';
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        
-        leadForm.style.opacity = '0.3';
-        leadForm.style.pointerEvents = 'none';
-        
-        leadForm.reset();
-        
-        setTimeout(() => {
-          successMsg.style.display = 'none';
-          leadForm.style.opacity = '1';
-          leadForm.style.pointerEvents = 'auto';
-        }, 5000);
+  /* FAQ accordion */
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    btn.addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      faqItems.forEach(i => {
+        i.classList.remove('active');
+        const q = i.querySelector('.faq-question');
+        const icon = i.querySelector('.faq-icon');
+        q.setAttribute('aria-expanded', 'false');
+        if (icon) icon.textContent = '+';
+      });
+      if (!isActive) {
+        item.classList.add('active');
+        btn.setAttribute('aria-expanded', 'true');
+        const icon = item.querySelector('.faq-icon');
+        if (icon) icon.textContent = '×';
       }
+    });
+  });
+
+  /* Contact form */
+  const form = document.getElementById('contact-form');
+  const feedback = document.getElementById('form-feedback');
+
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !message) {
+        showFeedback('Please fill in all required fields.', 'error');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showFeedback('Please enter a valid email.', 'error');
+        return;
+      }
+
+      showFeedback('Thank you! Your message has been received. We will contact you shortly.', 'success');
+      form.reset();
     });
   }
 
-
-  /* -----------------------------------------
-     8. Footer Copyright Auto-Year Setter
-     ----------------------------------------- */
-  const yearEl = document.getElementById('year');
-  if (yearEl) {
-    yearEl.innerText = new Date().getFullYear();
+  function showFeedback(msg, type) {
+    if (!feedback) return;
+    feedback.textContent = msg;
+    feedback.className = 'form-feedback ' + type;
+    feedback.hidden = false;
+    setTimeout(() => { feedback.hidden = true; }, 6000);
   }
-
 });
