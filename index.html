@@ -19,10 +19,10 @@
       <a href="#top" class="brand" aria-label="pixelu home">
         <img src="assets/logo.svg" alt="pixelu website design company logo" class="brand-logo">
       </a>
-      <div class="header-ctas">
-        <a href="tel:+917807211102" class="btn btn-header-call"><i class="fas fa-phone-alt"></i><span> Call Us</span></a>
-        <a href="https://wa.me/917807211102?text=Hi%20pixelu,%20I%20need%20a%20website%20for%20my%20hotel%20or%20travel%20business." class="btn btn-header-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span> WhatsApp</span></a>
-      </div>
+      <nav class="header-ctas" aria-label="Quick contact">
+        <a href="tel:+917807211102" class="btn btn-header-call"><i class="fas fa-phone-alt"></i><span>Call Us</span></a>
+        <a href="https://wa.me/917807211102?text=Hi%20pixelu,%20I%20need%20a%20website%20for%20my%20hotel%20or%20travel%20business." class="btn btn-header-wa" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i><span>WhatsApp</span></a>
+      </nav>
     </div>
   </header>
 
@@ -256,31 +256,51 @@
     </div>
   </aside>
 
-  <!-- TRUST BAR -->
-  <section class="trust-bar section-compact">
+  <!-- TRUST & PARTNERS -->
+  <section class="trust-partners-section section-compact" id="trust">
     <div class="container">
       <div class="trust-bar-grid">
-        <div class="trust-stat"><span class="trust-stat-num" data-target="250" data-suffix="+">0</span><span class="trust-stat-label">Projects Completed</span></div>
-        <div class="trust-stat"><span class="trust-stat-num" data-target="120" data-suffix="+">0</span><span class="trust-stat-label">Hospitality Clients</span></div>
-        <div class="trust-stat"><i class="fas fa-certificate"></i><span class="trust-stat-label">Certified Web Experts</span></div>
-        <div class="trust-stat"><i class="fas fa-star"></i><span class="trust-stat-label">4.9★ Average Reviews</span></div>
+        <article class="trust-stat-card">
+          <span class="trust-stat-num" data-target="250" data-suffix="+">0</span>
+          <span class="trust-stat-label">Projects Completed</span>
+        </article>
+        <article class="trust-stat-card">
+          <span class="trust-stat-num" data-target="120" data-suffix="+">0</span>
+          <span class="trust-stat-label">Hospitality Clients</span>
+        </article>
+        <article class="trust-stat-card">
+          <span class="trust-stat-icon"><i class="fas fa-certificate"></i></span>
+          <span class="trust-stat-label">Certified Web Experts</span>
+        </article>
+        <article class="trust-stat-card">
+          <span class="trust-stat-icon"><i class="fas fa-star"></i></span>
+          <span class="trust-stat-label">4.9★ Average Reviews</span>
+        </article>
       </div>
-      <div class="client-logos-row" aria-label="Client industries">
-        <span><i class="fas fa-hotel"></i> Boutique Hotels</span>
-        <span><i class="fas fa-plane"></i> Travel Operators</span>
-        <span><i class="fas fa-umbrella-beach"></i> Resort Groups</span>
-        <span><i class="fas fa-map"></i> Tourism Boards</span>
-        <span><i class="fas fa-store"></i> Retail Brands</span>
-        <span><i class="fas fa-building"></i> Corporate</span>
-      </div>
-    </div>
-  </section>
 
-  <section class="section section-compact partners-section">
-    <div class="container">
-      <h2 class="partners-title">Our Global Partners &amp; Platforms</h2>
-      <div class="partners-row">
-        <span>Clutch</span><span>Upwork</span><span>Google</span><span>GoodFirms</span><span>DesignRush</span><span>Trustpilot</span>
+      <div class="industry-pills" aria-label="Industries we serve">
+        <span class="industry-pill"><i class="fas fa-hotel"></i> Boutique Hotels</span>
+        <span class="industry-pill"><i class="fas fa-plane"></i> Travel Operators</span>
+        <span class="industry-pill"><i class="fas fa-umbrella-beach"></i> Resort Groups</span>
+        <span class="industry-pill"><i class="fas fa-map-marked-alt"></i> Tourism Boards</span>
+        <span class="industry-pill"><i class="fas fa-store"></i> Retail Brands</span>
+        <span class="industry-pill"><i class="fas fa-building"></i> Corporate</span>
+      </div>
+
+      <div class="partners-block">
+        <div class="section-header partners-header">
+          <span class="section-label">Trusted By</span>
+          <h2>Our Global Partners &amp; Platforms</h2>
+          <p>Recognized on leading review and discovery platforms worldwide.</p>
+        </div>
+        <div class="partners-grid">
+          <div class="partner-card"><i class="fas fa-star partner-icon clutch"></i><span>Clutch</span><small>Top Rated Agency</small></div>
+          <div class="partner-card"><i class="fab fa-google partner-icon google"></i><span>Google</span><small>Verified Reviews</small></div>
+          <div class="partner-card"><i class="fas fa-briefcase partner-icon upwork"></i><span>Upwork</span><small>Pro Verified</small></div>
+          <div class="partner-card"><i class="fas fa-award partner-icon goodfirms"></i><span>GoodFirms</span><small>Featured Partner</small></div>
+          <div class="partner-card"><i class="fas fa-pen-nib partner-icon designrush"></i><span>DesignRush</span><small>Agency Listing</small></div>
+          <div class="partner-card"><i class="fas fa-shield-alt partner-icon trustpilot"></i><span>Trustpilot</span><small>Excellent Score</small></div>
+        </div>
       </div>
     </div>
   </section>
@@ -327,49 +347,49 @@
       </div>
       <div class="pricing-grid pricing-grid-5">
         <article class="pricing-card premium-card fade-up">
-          <div class="pricing-header header-blue">Landing Page</div>
+          <div class="pricing-header header-blue"><i class="fas fa-file-alt" aria-hidden="true"></i><h3>Landing Page</h3></div>
           <div class="pricing-body">
-            <p class="pricing-price">₹9,999/-</p>
+            <p class="pricing-price"><span class="price-currency">₹</span>9,999<span class="price-suffix">/-</span></p>
             <p class="pricing-desc">Single high-converting page for campaigns &amp; offers.</p>
-            <ul><li>1 Premium Page</li><li>Mobile Responsive</li><li>Lead Form</li><li>Basic SEO</li></ul>
-            <a href="#contact" class="btn btn-outline">Choose Plan</a>
+            <ul class="pricing-features"><li>1 Premium Page</li><li>Mobile Responsive</li><li>Lead Form</li><li>Basic SEO</li></ul>
+            <a href="#contact" class="btn btn-outline btn-pricing" data-plan="Landing Page">Choose Plan</a>
           </div>
         </article>
         <article class="pricing-card premium-card fade-up">
-          <div class="pricing-header header-teal">Business Website</div>
+          <div class="pricing-header header-teal"><i class="fas fa-briefcase" aria-hidden="true"></i><h3>Business Website</h3></div>
           <div class="pricing-body">
-            <p class="pricing-price">₹24,999/-</p>
+            <p class="pricing-price"><span class="price-currency">₹</span>24,999<span class="price-suffix">/-</span></p>
             <p class="pricing-desc">Multi-page presence for growing brands.</p>
-            <ul><li>Up to 10 Pages</li><li>Custom Design</li><li>Blog Ready</li><li>3 Mo. Support</li></ul>
-            <a href="#contact" class="btn btn-outline">Choose Plan</a>
+            <ul class="pricing-features"><li>Up to 10 Pages</li><li>Custom Design</li><li>Blog Ready</li><li>3 Mo. Support</li></ul>
+            <a href="#contact" class="btn btn-outline btn-pricing" data-plan="Business Website">Choose Plan</a>
           </div>
         </article>
         <article class="pricing-card premium-card pricing-featured fade-up">
-          <span class="pricing-ribbon">Most Popular</span>
-          <div class="pricing-header header-red">Travel Agency Website</div>
+          <span class="pricing-badge-popular">Most Popular</span>
+          <div class="pricing-header header-red"><i class="fas fa-plane-departure" aria-hidden="true"></i><h3>Travel Agency Website</h3></div>
           <div class="pricing-body">
-            <p class="pricing-price">₹39,999/-</p>
+            <p class="pricing-price"><span class="price-currency">₹</span>39,999<span class="price-suffix">/-</span></p>
             <p class="pricing-desc">Packages, itineraries &amp; inquiry funnels that sell tours.</p>
-            <ul><li>Tour Catalog Pages</li><li>WhatsApp Integration</li><li>Advanced SEO</li><li>6 Mo. Support</li></ul>
-            <a href="#contact" class="btn btn-primary">Choose Plan</a>
+            <ul class="pricing-features"><li>Tour Catalog Pages</li><li>WhatsApp Integration</li><li>Advanced SEO</li><li>6 Mo. Support</li></ul>
+            <a href="#contact" class="btn btn-primary btn-pricing" data-plan="Travel Agency Website">Choose Plan</a>
           </div>
         </article>
         <article class="pricing-card premium-card fade-up">
-          <div class="pricing-header header-purple">Hotel Website</div>
+          <div class="pricing-header header-purple"><i class="fas fa-hotel" aria-hidden="true"></i><h3>Hotel Website</h3></div>
           <div class="pricing-body">
-            <p class="pricing-price">₹49,999/-</p>
+            <p class="pricing-price"><span class="price-currency">₹</span>49,999<span class="price-suffix">/-</span></p>
             <p class="pricing-desc">Rooms, amenities, galleries &amp; booking-ready UX.</p>
-            <ul><li>Room &amp; Gallery Pages</li><li>Booking Inquiry System</li><li>Speed Optimized</li><li>6 Mo. Support</li></ul>
-            <a href="#contact" class="btn btn-outline">Choose Plan</a>
+            <ul class="pricing-features"><li>Room &amp; Gallery Pages</li><li>Booking Inquiry System</li><li>Speed Optimized</li><li>6 Mo. Support</li></ul>
+            <a href="#contact" class="btn btn-outline btn-pricing" data-plan="Hotel Website">Choose Plan</a>
           </div>
         </article>
         <article class="pricing-card premium-card fade-up">
-          <div class="pricing-header header-charcoal">Custom Web Solution</div>
+          <div class="pricing-header header-charcoal"><i class="fas fa-cogs" aria-hidden="true"></i><h3>Custom Web Solution</h3></div>
           <div class="pricing-body">
-            <p class="pricing-price">Custom</p>
+            <p class="pricing-price pricing-price-custom">Custom</p>
             <p class="pricing-desc">Enterprise hospitality &amp; complex integrations.</p>
-            <ul><li>Unlimited Scope</li><li>API &amp; PMS Integrations</li><li>Dedicated Manager</li><li>12 Mo. Support</li></ul>
-            <a href="#contact" class="btn btn-outline">Get Quote</a>
+            <ul class="pricing-features"><li>Unlimited Scope</li><li>API &amp; PMS Integrations</li><li>Dedicated Manager</li><li>12 Mo. Support</li></ul>
+            <a href="#contact" class="btn btn-outline btn-pricing" data-plan="Custom Web Solution">Get Quote</a>
           </div>
         </article>
       </div>
@@ -534,46 +554,97 @@
         </div>
       </div>
       <div class="contact-form-panel fade-up">
-        <h3>Send us a message</h3>
-        <form id="contact-form" novalidate>
+        <div class="form-panel-head">
+          <h3>Get Your Free Quote</h3>
+          <p>Fill in your details — we'll recommend the right package for your business.</p>
+        </div>
+        <form id="contact-form" class="premium-form" novalidate>
           <div class="form-row">
-            <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" required placeholder="Your name"></div>
-            <div class="form-group"><label for="business">Business Type</label>
-              <select id="business" name="business">
-                <option value="">Select industry</option>
-                <option>Hotel / Resort</option>
-                <option>Tour &amp; Travel Agency</option>
-                <option>Travel Operator</option>
-                <option>Local Tourism</option>
-                <option>E-commerce</option>
-                <option>Other Business</option>
-              </select>
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <div class="input-wrap">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="business">Business Type</label>
+              <div class="input-wrap">
+                <i class="fas fa-hotel input-icon"></i>
+                <select id="business" name="business">
+                  <option value="">Select industry</option>
+                  <option>Hotel / Resort</option>
+                  <option>Tour &amp; Travel Agency</option>
+                  <option>Travel Operator</option>
+                  <option>Local Tourism</option>
+                  <option>E-commerce</option>
+                  <option>Other Business</option>
+                </select>
+              </div>
             </div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label for="email">Email</label><input type="email" id="email" name="email" required placeholder="you@email.com"></div>
-            <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone" name="phone" placeholder="Your phone number"></div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <div class="input-wrap">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" id="email" name="email" required placeholder="you@email.com" autocomplete="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <div class="input-wrap">
+                <i class="fas fa-phone-alt input-icon"></i>
+                <input type="tel" id="phone" name="phone" placeholder="Your phone number" autocomplete="tel">
+              </div>
+            </div>
           </div>
-          <div class="form-group"><label for="message">Project Details</label><textarea id="message" name="message" rows="4" required placeholder="Tell us about your hotel, travel packages, or website goals"></textarea></div>
+          <div class="form-group">
+            <label for="plan">Interested Package</label>
+            <div class="input-wrap">
+              <i class="fas fa-box input-icon"></i>
+              <select id="plan" name="plan">
+                <option value="">Select a package (optional)</option>
+                <option>Landing Page — ₹9,999</option>
+                <option>Business Website — ₹24,999</option>
+                <option>Travel Agency Website — ₹39,999</option>
+                <option>Hotel Website — ₹49,999</option>
+                <option>Custom Web Solution</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Details</label>
+            <div class="input-wrap textarea-wrap">
+              <i class="fas fa-comment-alt input-icon"></i>
+              <textarea id="message" name="message" rows="4" required placeholder="Tell us about your hotel, travel packages, pages needed, and timeline"></textarea>
+            </div>
+          </div>
           <p class="form-feedback" id="form-feedback" hidden></p>
-          <button type="submit" class="btn btn-primary btn-block">SEND MESSAGE</button>
+          <button type="submit" class="btn btn-primary btn-block form-submit-btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <p class="form-note">Prefer chat? <a href="https://wa.me/917807211102?text=Hi%20pixelu,%20I%20need%20a%20quote." target="_blank" rel="noopener">Message us on WhatsApp</a> for the fastest reply.</p>
         </form>
       </div>
     </div>
   </section>
 
-  <footer class="site-footer">
-    <div class="container">
-      <h3>About pixelu</h3>
-      <p>pixelu is the No 1 website design company trusted by hotels, resorts, tour operators, and travel agencies — plus e-commerce and service brands worldwide. As a full-service website design company, we craft beautiful, high-performing sites that drive bookings and growth. Choose the best website design company for your next project.</p>
-      <div class="footer-bottom">
-        <span>© 2026 pixelu. All rights reserved.</span>
-        <div class="footer-social">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+  <footer class="site-footer site-footer-minimal">
+    <div class="container footer-minimal-inner">
+      <a href="#top" class="footer-brand">
+        <img src="assets/logo.svg" alt="pixelu" class="footer-logo" height="28">
+      </a>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#outcomes">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
       </div>
+      <p class="footer-copy">© 2026 pixelu. All rights reserved.</p>
     </div>
   </footer>
 

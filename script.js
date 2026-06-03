@@ -140,6 +140,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
 
+  document.querySelectorAll('.btn-pricing[data-plan]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const plan = btn.getAttribute('data-plan');
+      const planSelect = document.getElementById('plan');
+      if (planSelect && plan) {
+        const options = Array.from(planSelect.options);
+        const match = options.find(o => o.textContent.startsWith(plan));
+        if (match) planSelect.value = match.textContent;
+        else {
+          const custom = document.createElement('option');
+          custom.value = plan;
+          custom.textContent = plan;
+          custom.selected = true;
+          planSelect.appendChild(custom);
+        }
+      }
+    });
+  });
+
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
