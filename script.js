@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const packageLinkEl = document.getElementById('package-link');
     if (packageLinkEl) {
       const encodedMsg = encodeURIComponent(`Hi Pixxelu Digital Technology, I am interested in the ${data.name} package (${data.price}).`);
-      packageLinkEl.href = `https://wa.me/91780721102?text=${encodedMsg}`;
+      packageLinkEl.href = `https://wa.me/917807211102?text=${encodedMsg}`;
     }
   };
 
