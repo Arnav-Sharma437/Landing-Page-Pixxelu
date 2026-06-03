@@ -317,6 +317,9 @@ section {
   display: inline-flex;
   gap: 40px;
   animation: scroll-marquee 25s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .marquee-content:hover {
@@ -669,6 +672,8 @@ section {
   background-color: #FFFFFF;
   padding: 60px 0;
   border-top: 1px solid var(--divider);
+  overflow: hidden;
+  width: 100%;
 }
 
 .partners-title {
@@ -910,6 +915,8 @@ section {
 .tech-section {
   background-color: #FFFFFF;
   padding: 60px 0;
+  overflow: hidden;
+  width: 100%;
 }
 
 .tech-marquee-content {
@@ -1682,14 +1689,16 @@ textarea.form-control {
   }
 
   .partners-section, .tech-section {
-    padding: 40px 15px;
+    padding: 40px 0;
+    overflow: hidden;
+    width: 100%;
   }
 
   .partners-title {
     font-size: 11px;
     letter-spacing: 0.1em;
     margin-bottom: 20px;
-    padding: 0 10px;
+    padding: 0 20px;
     line-height: 1.4;
   }
 
