@@ -1876,21 +1876,22 @@ textarea.form-control {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 32px;
+  margin-top: 50px;
   width: 100%;
   align-items: stretch;
 }
 
 .pkg-card {
-  flex: 0 1 calc(25% - 18px);
-  min-width: 270px;
+  flex: 0 1 calc(33.333% - 22px);
+  max-width: 380px;
+  min-width: 290px;
   background-color: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: var(--shadow-soft);
-  transition: var(--transition-smooth);
-  border: 2px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.03);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: 1px solid var(--card-border);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -1901,50 +1902,51 @@ textarea.form-control {
   --pkg-accent: #2563EB;
   --pkg-accent-hover: #1D4ED8;
   --pkg-bg-light: #EFF6FF;
-  --pkg-shadow-glow: rgba(37, 99, 235, 0.15);
+  --pkg-shadow-glow: rgba(37, 99, 235, 0.18);
 }
 
 .pkg-green {
   --pkg-accent: #10B981;
   --pkg-accent-hover: #059669;
   --pkg-bg-light: #ECFDF5;
-  --pkg-shadow-glow: rgba(16, 185, 129, 0.2);
+  --pkg-shadow-glow: rgba(16, 185, 129, 0.22);
 }
 
 .pkg-orange {
   --pkg-accent: #EA580C;
   --pkg-accent-hover: #C2410C;
   --pkg-bg-light: #FFF7ED;
-  --pkg-shadow-glow: rgba(234, 88, 12, 0.15);
+  --pkg-shadow-glow: rgba(234, 88, 12, 0.18);
 }
 
 .pkg-purple {
   --pkg-accent: #8B5CF6;
   --pkg-accent-hover: #7C3AED;
   --pkg-bg-light: #F5F3FF;
-  --pkg-shadow-glow: rgba(139, 92, 246, 0.15);
+  --pkg-shadow-glow: rgba(139, 92, 246, 0.18);
 }
 
 /* Outstanding Hover Lift & Glow Animations */
 .pkg-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px);
   border-color: var(--pkg-accent);
-  box-shadow: 0 22px 45px var(--pkg-shadow-glow), 0 2px 10px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 30px 60px var(--pkg-shadow-glow), 0 0 0 1px var(--pkg-accent);
 }
 
 /* Best Seller card stands out slightly and has a pulse animation */
 .pkg-green.pkg-card {
-  transform: scale(1.03);
+  transform: scale(1.04);
   z-index: 5;
-  border-color: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.25);
+  box-shadow: 0 15px 35px rgba(16, 185, 129, 0.08);
 }
 .pkg-green.pkg-card:hover {
-  transform: scale(1.05) translateY(-5px);
+  transform: scale(1.06) translateY(-8px);
   border-color: var(--pkg-accent);
 }
 
 .pkg-header {
-  padding: 28px 24px 20px 24px;
+  padding: 32px 28px 24px 28px;
   background: linear-gradient(135deg, var(--pkg-accent), var(--pkg-accent-hover));
   color: #FFFFFF;
   position: relative;
@@ -1953,49 +1955,49 @@ textarea.form-control {
 
 .pkg-badge {
   display: inline-block;
-  font-size: 10px;
+  font-size: 10.5px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   background-color: rgba(255, 255, 255, 0.22);
   color: #FFFFFF;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 50px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .pkg-header h3 {
-  font-size: 20px;
+  font-size: 22px;
   color: #FFFFFF;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   font-weight: 800;
   line-height: 1.2;
 }
 
 .pkg-price {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 800;
   font-family: var(--font-heading);
   line-height: 1;
 }
 
 .pkg-price span {
-  font-size: 14px;
+  font-size: 15px;
   opacity: 0.85;
   font-weight: 500;
 }
 
 .pkg-subprice {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
-  opacity: 0.8;
-  margin-top: 6px;
+  opacity: 0.85;
+  margin-top: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .pkg-body {
-  padding: 28px 24px;
+  padding: 32px 28px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -2004,15 +2006,15 @@ textarea.form-control {
 }
 
 .pkg-features {
-  list-style: none;
-  margin-bottom: 28px;
-  padding: 0;
+  list-style: none !important;
+  margin-bottom: 32px;
+  padding: 0 !important;
 }
 
 .pkg-features li {
-  font-size: 13.5px;
+  font-size: 14px;
   color: var(--text-body);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -2020,15 +2022,19 @@ textarea.form-control {
   line-height: 1.4;
 }
 
+.pkg-features li::before {
+  display: none !important;
+}
+
 .pkg-features li i {
   color: var(--pkg-accent);
-  font-size: 13px;
+  font-size: 14px;
   flex-shrink: 0;
 }
 
 .pkg-cta-group {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   width: 100%;
 }
 
@@ -2037,9 +2043,9 @@ textarea.form-control {
   background-color: #25D366;
   color: #FFFFFF;
   border: none;
-  font-size: 13px;
-  padding: 10px 12px;
-  border-radius: 8px;
+  font-size: 13.5px;
+  padding: 12px 14px;
+  border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
@@ -2058,9 +2064,9 @@ textarea.form-control {
   background-color: var(--text-heading);
   color: #FFFFFF;
   border: none;
-  font-size: 13px;
-  padding: 10px 12px;
-  border-radius: 8px;
+  font-size: 13.5px;
+  padding: 12px 14px;
+  border-radius: 10px;
   font-weight: 700;
   text-decoration: none;
   display: inline-flex;
